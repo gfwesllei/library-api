@@ -1,6 +1,6 @@
-package br.com.gfwesllei.library.Util;
+package br.com.gfwesllei.library.util;
 
-import br.com.gfwesllei.library.Exceptions.DividePerZeroException;
+import br.com.gfwesllei.library.exceptions.DividePerZeroException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -16,12 +16,12 @@ class CalculatorTest {
     public Calculator calculator;
 
     @BeforeEach
-    public void setup(){
+    void  setup(){
         calculator = new Calculator();
     }
 
     @Test
-    public void shouldSum2Values() {
+    void  shouldSum2Values() {
         //cenary
         double value1=5,value2=10;
         double expectedResult=15;
@@ -32,7 +32,7 @@ class CalculatorTest {
     }
 
     @Test
-    public void shouldSubtract2Values(){
+    void  shouldSubtract2Values(){
         double value1=5,value2=10;
         double expectedResult=-5;
 
@@ -42,7 +42,7 @@ class CalculatorTest {
     }
 
     @Test
-    public void sholdDivide2Values(){
+    void  sholdDivide2Values(){
         double value1=10,value2=5;
         double expectedResult=2;
 
@@ -52,7 +52,7 @@ class CalculatorTest {
     }
 
     @Test
-    public void sholdThrowDivisionPerZeroException(){
+    void  sholdThrowDivisionPerZeroException(){
         double value1=10,value2=0;
         //assertions
         assertThatThrownBy(()->{
@@ -61,7 +61,7 @@ class CalculatorTest {
     }
 
     @Test
-    public void sholdMultiply2Values(){
+    void  sholdMultiply2Values(){
         double value1=10,value2=5;
         double expectedResult=50;
 

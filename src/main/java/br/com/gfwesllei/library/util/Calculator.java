@@ -1,6 +1,6 @@
-package br.com.gfwesllei.library.Util;
+package br.com.gfwesllei.library.util;
 
-import br.com.gfwesllei.library.Exceptions.DividePerZeroException;
+import br.com.gfwesllei.library.exceptions.DividePerZeroException;
 
 /**
  * @author weslleiferreira

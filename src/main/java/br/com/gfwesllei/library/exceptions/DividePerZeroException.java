@@ -1,4 +1,4 @@
-package br.com.gfwesllei.library.Exceptions;
+package br.com.gfwesllei.library.exceptions;
 
 /**
  * @author weslleiferreira
