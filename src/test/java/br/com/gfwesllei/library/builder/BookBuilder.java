@@ -21,6 +21,11 @@ public class BookBuilder {
         return bookBuilder;
     }
 
+    public BookBuilder withId(Long id){
+        this.book.setId(id);
+        return this;
+    }
+
     public Book build(){
         return this.book;
     }
