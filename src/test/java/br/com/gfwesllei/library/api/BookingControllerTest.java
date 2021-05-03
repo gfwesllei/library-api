@@ -24,6 +24,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import static br.com.gfwesllei.library.builder.BookBuilder.oneBook;
 import static br.com.gfwesllei.library.builder.RequestBuilder.onePost;
+import static org.hamcrest.Matchers.hasSize;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -79,7 +80,7 @@ class BookingControllerTest {
     @Test
     @DisplayName("Should return 400, if content not presence")
     void shouldReturnBadRequestWhenNoContent() throws Exception {
-        mockMvc.perform(onePost(BOOK_API).now()).andExpect(status().isBadRequest());
+        mockMvc.perform(onePost(BOOK_API).now()).andExpect(status().isBadRequest()).andExpect(jsonPath("erros",hasSize(3)));
     }
 
 

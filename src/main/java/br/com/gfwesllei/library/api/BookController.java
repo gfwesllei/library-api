@@ -1,5 +1,6 @@
 package br.com.gfwesllei.library.api;
 
+import br.com.gfwesllei.library.api.erros.ApiErros;
 import br.com.gfwesllei.library.entity.Book;
 import br.com.gfwesllei.library.service.BookingService;
 import br.com.gfwesllei.library.vo.BookVO;
@@ -7,10 +8,11 @@ import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 /**
  * @author weslleiferreira
@@ -29,7 +31,7 @@ public class BookController {
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<BookVO> create(@RequestBody BookVO bookVO){
+    public ResponseEntity<BookVO> create(@Valid @RequestBody BookVO bookVO){
 
 
         Book book =modelMapper.map(bookVO,Book.class);
@@ -38,5 +40,10 @@ public class BookController {
         BookVO bookVOResult =modelMapper.map(book,BookVO.class);
 
         return new ResponseEntity<>(bookVOResult,HttpStatus.CREATED);
+    }
+
+    @ExceptionHandler(value = MethodArgumentNotValidException.class)
+    public ApiErros handleApiExceptions(MethodArgumentNotValidException exception){
+
     }
 }
